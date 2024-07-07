@@ -28,6 +28,9 @@ if ingredients_list:
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + each_fruit)
         fv_df = st.dataframe (data=fruityvice_response.json(), use_container_width=True)
 
+        search_on=pd_df. loc[pd_df ['FRUIT_NAME'] == each_fruit, 'SEARCH_ON']. iloc [0]
+        st.write('The search value for ', each_fruit,' is ', search_on, '.')
+
     # st.write(ingredients_string)
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
